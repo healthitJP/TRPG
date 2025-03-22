@@ -1,0 +1,86 @@
+game-rule:
+  title: "クトゥルフの呼び声TRPG (AI GM & プレイヤーモデル)"
+  concept:
+    description: "H.P.ラヴクラフトの作品に基づいたホラーTRPG。人間プレイヤーは探索者として謎を解き明かし、AIはキーパー、他の探索者、NPCを演じる。"
+  player-role: "秘密を暴き、忘れられた場所を発見し、クトゥルフ神話の恐怖に立ち向かう探索者"
+  ai-role:
+    - "キーパー (ゲームマスター): シナリオの提示、NPCの操作、ルール判定、世界の描写"
+    - "プレイヤー (探索者): 人間プレイヤーと共に事件を調査する探索者"
+    - "ノンプレイヤーキャラクター (NPC): シナリオに登場する様々な人物"
+  themes:
+    - "秘密"
+    - "謎"
+    - "恐怖"
+    - "正気喪失"
+    - "クトゥルフ神話"
+  setting:
+    description: "クラシック時代（1920年代、1930年代）または現代。キーパーの裁量で他の時代設定も可能"
+  core-tools:
+    dice:
+      - "D100"
+      - "D20"
+      - "D8"
+      - "D6"
+      - "D4"
+  core-mechanics:
+    character-creation:
+      step1:
+        description: "能力値を決める"
+        ability-scores:
+          STR:
+            description: "筋力。探索者の筋肉の力を表す。これが高ければ高いほど、探索者は重いものを持ち上げたり、しっかりと何かにしがみついたりできる。この能力値は、近接戦で探索者が与えるダメージを決定する。ゼロに減少した場合、ベッドを出ることすらできない。"
+            generation: "3D6 × 5"
+            typical-values:
+              - value: 0
+                description: "衰弱（立ち上がったり、紅茶のカップを持ち上げたりすることすらもできない"
+              - value: 15
+                description: "貧弱である"
+              - value: 50
+                description: "平均の人間の筋力"
+              - value: 90
+                description: "あなたが今まであった中で最も強い人々の一人。"
+              - value: 99
+                description: "国際的（オリンピックの重量挙げ選手）。人間の最大値。"
+              - value: 140
+                description: "人間の筋力を超えている（ゴリラや馬）。"
+              - value: "200+"
+                description: "怪物的な筋力（例えばグラーキなど。）。"
+          CON:
+            description: "体力。健康様態、活力、バイタリティーを表す。毒と病気はCONを直接脅かすだろう。高いCONを持つ場合、より多くの耐久力（HPのこと。CONとSIZの合計を10で輪って端数を切り捨てた値）を持ち、負傷や攻撃に抵抗する力がある。重大な肉体的な損傷や魔術による攻撃によってこの値が低下する可能性もある。ゼロになった場合死亡する。"
+            generation: "3D6 × 5"
+            typical-values:
+              - value: 0
+                description: "死亡"
+              - value: 1
+                description: "病弱、病気は長引きがちで、おそらく助けなしでは行動できない。"
+              - value: 15
+                description: "不健康、病気の発作を持つ。しょっちゅう痛みを感じるなど。"
+              - value: 50
+                description: "平均の人間の体力"
+              - value: 90
+                description: "寒さに強く、頑丈で強壮。"
+              - value: 99
+                description: "頑丈な体力で強い痛みに耐えることができる。人間の最大値。"
+              - value: 140
+                description: "人間の体力を超えている（象など）。"
+              - value: "200+"
+                description: "怪物的な体力で、ほとんどの地球の病気を無視できる（ニョグタなど）。"  
+          SIZ:
+            description: "体型"
+            generation: "(2D6 + 6) × 5"
+          DEX:
+            description: "敏捷性"
+            generation: "3D6 × 5"
+          APP:
+            description: "外見"
+            generation: "3D6 × 5"
+          INT:
+            description: "知能"
+            generation: "(2D6 + 6) × 5"
+          POW:
+            description: "パワー"
+            generation: "3D6 × 5"
+          EDU:
+            description: "教育"
+            generation: "(2D6 + 6) × 5"
+            
