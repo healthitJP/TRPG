@@ -25,7 +25,7 @@ game-rule:
   core-mechanics:
     character-creation:
       step1:
-        description: "能力値を決める"
+        description: "能力値を決める。"
         ability-scores:
           STR:
             description: "筋力。探索者の筋肉の力を表す。これが高ければ高いほど、探索者は重いものを持ち上げたり、しっかりと何かにしがみついたりできる。この能力値は、近接戦で探索者が与えるダメージを決定する。ゼロに減少した場合、ベッドを出ることすらできない。"
@@ -173,6 +173,95 @@ game-rule:
                 description: "自分の研究分野での世界クラスの権威。"
               - value: 99
                 description: "人間の最大値。"
-                
-                
-            
+        fortune:
+          description: "運。"
+          generation: "3D6 × 5"
+        age:
+          description: "年齢。15~90際の間で自由に選ぶことができる。選んだ年齢によって能力値に適切な修正を行う。"
+          typical-values:
+            - value-range: 15-19
+              description: "15~19歳。STRとSIZから合計5ポイント減少させる。幸運を導き出す際は2下位ロールしてより大きい方の値を使用する。"
+            - value-range: 20-39
+              description: "20~39歳。EDUの上達チェックを1回行う。"
+            - value-range: 40-49
+              description: "40~49歳。EDUの上達チェックを2回行い、STRかCONかDEXから合計5ポイントを減少させる、また、APPを5ポイント減少させる。"
+            - value-range: 50-59
+              description: "50~59歳。EDUの上達チェックを3回行い、STRかCONかDEXから合計10ポイントを減少させる、また、APPを10ポイント減少させる。"
+            - value-range: 60-69
+              description: "60~69歳。EDUの上達チェックを4回行い、STRかCONかDEXから合計20ポイントを減少させる、また、APPを15ポイント減少させる。"
+            - value-range: 70-79
+              description: "70~79歳。EDUの上達チェックを4回行い、STRかCONかDEXから合計40ポイントを減少させる、また、APPを20ポイント減少させる。"
+            - value-range: 80-89
+              description: "80~89歳。EDUの上達チェックを4回行い、STRかCONかDEXから合計80ポイントを減少させる、また、APPを25ポイント減少させる。"
+            - note: 
+              description: "EDUの上達チェックを行うには、ただパーセント・ダイスをロールするだけでよい。結果が現在のEDUよりも多き場合、探索者のEDUに1D10%を加える（EDUが99より大きくなることはないことに注意）
+        damage-bonus:
+          description: "ダメージボーナス。火器の攻撃には適用されないボーナス。STR＋SIZの値によってもとまる。近接戦ではダメージボーナスを、キャラクターの一撃すべてに加える。これはこぶしのような生来の武器でも近接武器でも同様。"
+          typical-values:
+            - when: "STR＋SIZが2~64のとき"
+              value: "-2"
+            - when: "STR＋SIZが65~84のとき"
+              value: "-1"
+            - when: "STR＋SIZが85~124のとき"
+              value: "0"
+            - when: "STR＋SIZが125~164のとき"
+              value: "+1D4"
+            - when: "STR＋SIZが165~204のとき"
+              value: "+1D6"
+            - when: "STR＋SIZが205~284のとき"
+              value: "+2D6"
+            - when: "STR＋SIZが285~364のとき"
+              value: "+3D6"
+            - when: "STR＋SIZが365~444のとき"
+              value: "4D6"
+            - when: "STR＋SIZが445~524のとき"
+              value: "5D6"
+            - when: "STR＋SIZが525以上のとき"
+              value: "+6D6+(1D6*((STR+SIZ-524)/80)ただし小数点以下の端数切り上げ))"
+        build:
+          description: "ビルド。ひとめでわかる大きさ普通の人間が0子供が-2ヘビー級ボクサーが2　これは実際の大きさとは比例しない。あくまでどのような動作を行うことができるかの目安。戦闘マヌーパーとチェイスに使用されるほか、スケール感を与える。STR+SIZの値によってもとまる。"
+          typical-values:
+            - when: "STR＋SIZが2~64のとき"
+              value: "-2"
+            - when: "STR＋SIZが65~84のとき"
+              value: "-1"
+            - when: "STR＋SIZが85~124のとき"
+              value: "0"
+            - when: "STR＋SIZが125~164のとき"
+              value: "+1"
+            - when: "STR＋SIZが165~204のとき"
+              value: "+2"
+            - when: "STR＋SIZが205~284のとき"
+              value: "+3"
+            - when: "STR＋SIZが285~364のとき"
+              value: "+4"
+            - when: "STR＋SIZが365~444のとき"
+              value: "+5"
+            - when: "STR＋SIZが445~524のとき"
+              value: "+6"
+            - when: "STR＋SIZが525以上のとき"
+              value: "+6+((STR+SIZ-524)/80)ただし小数点以下の端数切り上げ)"
+        HP:
+          description: "耐久力（HP）。ゲーム中に探索者、NPC,または怪物に与えられたダメージの累積を記録し、その人（または怪物）が痛み、疲労困憊、死によって倒れる前にどれほど長い間、行動を撮り続けることができるかを示す。キャラクターの耐久力はCONとSIZを合計して10で割って決定する（端数切捨て）。"
+          generation: "((CON+SIZ)/10)ただし小数点以下の端数切り捨て)"
+        MOV:
+          description: "移動率（MOV）。1ラウンドに探索者は自分のMOVの値の5倍に等しい距離(m)を移動できる。年齢とSTR,DEX,SIZによって求まる。typical-valuesに示されるMOVのルールは人間ではない存在には適用されない。"
+          typical-values:
+            - when: "DEXとSTRの両方が、SIZよりも小さい"
+              value: "MOV7"
+            - when: "DEXとSTRのうちどちらかが、SIZ以上である、またはこれら３つの能力値がすべて等しい"
+              value: "MOV8"
+            - when: "DEXとSTRのどちらもSIZよりも大きい"
+              value: "MOV9"
+            - when: "年齢が40代である"
+              value: "MOVを1減少させる"
+            - when: "年齢が50代である"
+              value: "MOVを2減少させる"
+            - when: "年齢が60代である"
+              value: "MOVを3減少させる"
+            - when: "年齢が70代である"
+              value: "MOVを4減少させる"
+            - when: "年齢が80代である"
+              value: "MOVを5減少させる"
+      step2:
+        description: "職業を決める。"
